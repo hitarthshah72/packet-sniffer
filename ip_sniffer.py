@@ -96,6 +96,15 @@ class Sniffer:
         print('------------------------------------------------------------')
         print(' '.join(res))
 
+        row_list = [["protocol", "count"],
+                    ["ip", self.ip_count],
+                    ["tcp", self.tcp_count],
+                    ["udp", self.udp_count],
+                    ["dns", self.dns_count]]
+        with open('output.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerows(row_list)
+
     def run(self):
         try:
             self.sniff()
